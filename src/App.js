@@ -1,18 +1,10 @@
 import './App.css';
 import React from 'react';
-import Header from './components/Header/Header'
-import { ChakraProvider } from '@chakra-ui/react'
-
-
+import QuanAnList from './components/DanhSachQuanAn/QuanAnList';
 function App() {
   return (
-    <div className="App">
-      { }
-      <Header/>
-    </div>
+    <QuanAnList/>
   );
 }
 
 export default App;
-
-
