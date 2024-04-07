@@ -1,9 +1,14 @@
 import './App.css';
 import React from 'react';
-import QuanAnList from './components/DanhSachQuanAn/QuanAnList';
+import RestaurantsPage from './components/DanhSachQuanAn/RestaurantsPage';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 function App() {
   return (
-    <QuanAnList/>
+    <BrowserRouter>
+    <Routes>
+      <Route path='restaurants' element={<RestaurantsPage/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { NavigationContainer, PrevButton, NextButton } from "./Button";
 import { Box } from "@chakra-ui/react";
@@ -7,6 +7,18 @@ import QuanAn from "./QuanAn";
 import data from "./QuanAnData";
 
 const SliderQuanAn = () => {
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnding, setIsEnding] = useState(false);
+
+  const onSlideChange = (swiper) => {
+    // Hiển thị prev button nếu vị trí != 0
+    setIsBeginning(swiper.realIndex === 0 ? true : false);
+
+    // Ẩn next button nếu vị trị = tổng độ dài - 4
+    setIsEnding(swiper.realIndex === swiper.slides.length - 4 ? true : false);
+    // console.log(swiper.realIndex, " = ", swiper.slides.length - 4);
+  };
+
   // Sử dụng useRef để lưu trữ tham chiếu tới Swiper instance
   const swiperRef = useRef(null);
 
@@ -26,7 +38,7 @@ const SliderQuanAn = () => {
   return (
     <>
       <Box style={{ position: "relative" }}>
-        <Swiper slidesPerView={4} ref={swiperRef}>
+        <Swiper slidesPerView={4} ref={swiperRef} onSlideChange={onSlideChange}>
           {data.QuanAnData.map((item, index) => {
             return (
               <SwiperSlide
@@ -50,8 +62,8 @@ const SliderQuanAn = () => {
           })}
         </Swiper>
         <NavigationContainer>
-          <PrevButton onClick={handlePrevClick} />
-          <NextButton onClick={handleNextClick} />
+          {!isBeginning ? <PrevButton onClick={handlePrevClick} /> : null}
+          {!isEnding ? <NextButton onClick={handleNextClick} /> : null}
         </NavigationContainer>
       </Box>
     </>

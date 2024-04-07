@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Flex, Container, Text } from "@chakra-ui/react";
-import SliderQuanAn from "./SliderQuanAn";
-
-const QuanAnList = () => {
+import FoodNearestYou from "./NearestFoodsToYou";
+import NearestRestaurantsToYou from "./NearestRestaurantsToYou";
+const RestaurantsPage = () => {
   return (
     <Flex minHeight={"100vh"} justifyContent={"center"}>
       <Container maxW={"container.md"} padding={20}>
@@ -14,25 +14,14 @@ const QuanAnList = () => {
             <Text>Nhà hàng</Text>
           </Flex>
 
-          {/* Near you */}
-          <Box>
-            <Text
-              fontWeight={"bold"}
-              fontSize={30}
-              m={0}
-              mb={20}
-              p={"0px 12px"}
-            >
-              Món ngon gần bạn
-            </Text>
-            <Box>
-              <SliderQuanAn />
-            </Box>
-          </Box>
+          {/* Nearest Foods to you */}
+          <FoodNearestYou />
+          {/* Nearest Restaurants to you */}
+          <NearestRestaurantsToYou />
         </Box>
       </Container>
     </Flex>
   );
 };
 
-export default QuanAnList;
+export default RestaurantsPage;

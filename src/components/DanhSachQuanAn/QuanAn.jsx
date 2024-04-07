@@ -12,7 +12,7 @@ const QuanAn = ({
 }) => {
   return (
     <>
-      <Box>
+      <Box className="ItemBox" cursor={"pointer"}>
         <VStack alignItems={"flex-start"} minW={280} maxW={280} maxH={300}>
           {/* Restaurant Image */}
           <Flex position={"relative"}>
